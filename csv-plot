@@ -1,0 +1,15 @@
+#!/bin/bash
+# CSV Plotter - Simple visualization tool
+# Usage: ./csv-plot filename.csv [options]
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Check if Julia is available
+if ! command -v julia &> /dev/null; then
+    echo "Error: Julia is not installed or not in PATH"
+    echo "Please install Julia from https://julialang.org/downloads/"
+    exit 1
+fi
+
+# Run the CSV plotter
+julia --project "$SCRIPT_DIR/csv_plotter.jl" "$@"

@@ -1,0 +1,23 @@
+[name]
+CSVPlotter = "0.1.0"
+
+[authors]
+IJ1TI
+
+[version]
+0.1.0
+
+[deps]
+ArgParse = "0.7"
+CSV = "0.10"
+DataFrames = "1.6"
+Plots = "1.40"
+
+[compat]
+julia = "1.8"
+
+[extras]
+Test = "1.8"
+
+[targets]
+test = ["Test"]
