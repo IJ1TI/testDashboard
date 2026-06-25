@@ -51,11 +51,11 @@ function parse_commandline()
             help = "Save plot to file"
         "--width"
             help = "Plot width in pixels"
-            default = "800"
+            default = 800
             arg_type = Int
         "--height"
             help = "Plot height in pixels"
-            default = "600"
+            default = 600
             arg_type = Int
     end
     
