@@ -9,6 +9,7 @@ A simple, cross-platform Julia tool to visualize 2-column CSV data interactively
 - **Multiple plot types**: Line, scatter, bar, and histogram plots
 - **Customizable**: Set titles, axis labels, and dimensions
 - **Save capability**: Export plots to image files
+- **Standalone executable**: Can be compiled to run without Julia installed
 
 ## Requirements
 
@@ -36,6 +37,45 @@ julia --project csv_plotter.jl sample_data.csv
 ```julia
 using Pkg
 Pkg.add(url="https://github.com/IJ1TI/testDashboard.git")
+```
+
+### Method 3: Standalone Executable (No Julia Required)
+
+Build a standalone executable that includes the Julia runtime:
+
+```bash
+# Clone the repository
+git clone https://github.com/IJ1TI/testDashboard.git
+cd testDashboard
+
+# Install PackageCompiler (if not already installed)
+julia -e 'using Pkg; Pkg.add("PackageCompiler")'
+
+# Build the standalone executable
+julia build_standalone.jl
+
+# Run the executable (no Julia installation needed)
+./csv_plotter sample_data.csv --title "My Plot"
+```
+
+**Note:** The standalone executable will be larger (~50-100MB) as it includes the Julia runtime.
+
+#### Windows Standalone
+```batch
+:: Build
+julia build_standalone.jl
+
+:: Run
+csv_plotter.exe data.csv --title "My Plot"
+```
+
+#### Linux/macOS Standalone
+```bash
+# Make executable
+chmod +x csv_plotter
+
+# Run
+./csv_plotter data.csv --title "My Plot"
 ```
 
 ## Usage
@@ -180,6 +220,42 @@ julia --project csv_plotter.jl sample_data.csv --type bar --title "Bar Chart"
 ```bash
 julia --project csv_plotter.jl sample_data.csv --type histogram --ylabel "Frequency"
 ```
+
+## Building Standalone Executable
+
+To create a standalone executable that runs without Julia installed:
+
+### Requirements for Building
+- Julia 1.8+ (only needed for building, not for running the final executable)
+- PackageCompiler.jl package
+
+### Build Steps
+
+1. **Install PackageCompiler** (if not already installed):
+   ```julia
+   using Pkg
+   Pkg.add("PackageCompiler")
+   ```
+
+2. **Build the executable**:
+   ```bash
+   julia build_standalone.jl
+   ```
+
+3. **Run the executable**:
+   ```bash
+   # Linux/macOS
+   ./csv_plotter data.csv --title "My Plot"
+   
+   # Windows
+   csv_plotter.exe data.csv --title "My Plot"
+   ```
+
+### Notes
+- The first build may take several minutes
+- The executable will be ~50-100MB in size
+- The executable includes the Julia runtime and all dependencies
+- First run of the executable may take a few seconds to initialize
 
 ## Troubleshooting
 
