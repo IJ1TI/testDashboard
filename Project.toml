@@ -12,6 +12,7 @@ ArgParse = "0.7"
 CSV = "0.10"
 DataFrames = "1.6"
 Plots = "1.40"
+PackageCompiler = "2.0"
 
 [compat]
 julia = "1.8"
